@@ -1,0 +1,34 @@
+﻿@inject HttpClient Http
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+<input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id" value="@stringValue" @oninput="(EventArgs) => {SetValue(EventArgs.Value.ToString());}">
+<button @onclick="() => { AddItem(); }">Add Item</button>
+@code{
+    string stringValue = "";
+
+    private void SetValue(string value)
+    {
+        stringValue = value;
+    }
+
+    private async void AddItem()
+    {
+        bool found = false;
+        int index = 0;
+        do
+        {
+            if (await localStorage.ContainKeyAsync("line"+index))
+            {
+                index++;
+            }
+            else
+            {
+                found = true;
+            }
+        } while(!found);
+
+        ListItem listItem = new ListItem(false, stringValue);
+        string json = JsonConvert.SerializeObject(listItem);
+        await localStorage.SetItemAsync<string>("line" + index, json);
+    }
+}

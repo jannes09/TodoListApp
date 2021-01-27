@@ -1,0 +1,35 @@
+﻿@inject HttpClient Http
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+
+<table class="mdc-data-table__table">
+    <tbody class="mdc-data-table__content">
+        @foreach (ListItem item in itemList)
+        {
+            <tr class="mdc-data-table__cell"><input type="checkbox" class="mdc-checkbox__native-control " id="mb_dc47ce2d-c4e8-4364-beed-c26951f238df" checked=@item.BoxChecked onclick=""> @item.Text </tr>
+        }
+    </tbody>
+</table>
+
+@code{
+    List<ListItem> itemList = new List<ListItem>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        for (int i = 0; i < await localStorage.LengthAsync(); i++)
+        {
+            string key = await localStorage.KeyAsync(i);
+            if (key.Substring(0,4)=="line")
+            {
+                string json = await localStorage.GetItemAsStringAsync(key);
+
+                ListItem item = JsonConvert.DeserializeObject<ListItem>(json);
+                itemList.Add(item);
+            }
+        }
+    }
+
+    private void SaveCheck(){
+
+    }
+}
