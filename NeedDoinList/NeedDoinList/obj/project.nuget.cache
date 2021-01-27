@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XRmkaLlEQAlVNeOPigP0IZ11a/aYsxZUdEvIFrXgTUr5if1ZF4sAys2JRrz1NF0FjBp1P4uNlXhPnHtIrhoqQg==",
+  "dgSpecHash": "Gqhx//ZCz9ClwLR1dbfIdvFIK27Q6wZxktHqburCL5NUaOJW1zUrFOLN4OtzSrw2mlVJieyJSIMa71XO/iGZCg==",
   "success": true,
-  "projectFilePath": "C:\\Projects\\NeedDoinList\\NeedDoinList\\NeedDoinList.csproj",
+  "projectFilePath": "C:\\Repos\\TodoListApp\\NeedDoinList\\NeedDoinList\\NeedDoinList.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Jannes\\.nuget\\packages\\blazored.localstorage\\3.0.0\\blazored.localstorage.3.0.0.nupkg.sha512",
     "C:\\Users\\Jannes\\.nuget\\packages\\fastmember\\1.1.0\\fastmember.1.1.0.nupkg.sha512",

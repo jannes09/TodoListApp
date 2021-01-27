@@ -13,105 +13,105 @@ namespace NeedDoinList.Pages.Components
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Projects\NeedDoinList\NeedDoinList\_Imports.razor"
+#line 1 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Projects\NeedDoinList\NeedDoinList\_Imports.razor"
+#line 2 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\_Imports.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Projects\NeedDoinList\NeedDoinList\_Imports.razor"
+#line 3 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Projects\NeedDoinList\NeedDoinList\_Imports.razor"
+#line 4 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Projects\NeedDoinList\NeedDoinList\_Imports.razor"
+#line 5 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Projects\NeedDoinList\NeedDoinList\_Imports.razor"
+#line 6 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\_Imports.razor"
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Projects\NeedDoinList\NeedDoinList\_Imports.razor"
+#line 7 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Projects\NeedDoinList\NeedDoinList\_Imports.razor"
+#line 8 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\_Imports.razor"
 using NeedDoinList;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Projects\NeedDoinList\NeedDoinList\_Imports.razor"
+#line 9 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\_Imports.razor"
 using NeedDoinList.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Projects\NeedDoinList\NeedDoinList\_Imports.razor"
+#line 10 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\_Imports.razor"
 using NeedDoinList.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Projects\NeedDoinList\NeedDoinList\_Imports.razor"
+#line 11 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\_Imports.razor"
 using NeedDoinList.Pages.Components;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Projects\NeedDoinList\NeedDoinList\_Imports.razor"
+#line 12 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\_Imports.razor"
 using Newtonsoft.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "C:\Projects\NeedDoinList\NeedDoinList\_Imports.razor"
+#line 13 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\_Imports.razor"
 using System.IO;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Projects\NeedDoinList\NeedDoinList\_Imports.razor"
+#line 14 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\_Imports.razor"
 using Blazored.LocalStorage;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 15 "C:\Projects\NeedDoinList\NeedDoinList\_Imports.razor"
+#line 15 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\_Imports.razor"
 using Material.Blazor;
 
 #line default
@@ -125,11 +125,12 @@ using Material.Blazor;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 14 "C:\Projects\NeedDoinList\NeedDoinList\Pages\Components\ItemTable.razor"
+#line 17 "C:\Repos\TodoListApp\NeedDoinList\NeedDoinList\Pages\Components\ItemTable.razor"
       
     List<ListItem> itemList = new List<ListItem>();
 
     protected override async Task OnInitializedAsync()
+
     {
         for (int i = 0; i < await localStorage.LengthAsync(); i++)
         {
@@ -143,6 +144,25 @@ using Material.Blazor;
             }
         }
     }
+
+    private async void SaveCheck(string name){
+
+        string json = await localStorage.GetItemAsStringAsync(name);
+        ListItem item = JsonConvert.DeserializeObject<ListItem>(json);
+        if (item.BoxChecked)
+        {
+            item.BoxChecked = false;
+        }
+        else
+        {
+            item.BoxChecked = true;
+        }
+        await localStorage.RemoveItemAsync(name);
+        json = JsonConvert.SerializeObject(item);
+        await localStorage.SetItemAsync<string>(name, json);
+    }
+
+
 
 #line default
 #line hidden

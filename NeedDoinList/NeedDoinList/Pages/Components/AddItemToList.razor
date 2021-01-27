@@ -14,21 +14,21 @@
     private async void AddItem()
     {
         bool found = false;
-        int index = 0;
+        int i = 0;
         do
         {
-            if (await localStorage.ContainKeyAsync("line"+index))
+            if (await localStorage.ContainKeyAsync("line"+i))
             {
-                index++;
+                i++;
             }
             else
             {
                 found = true;
             }
         } while(!found);
-
-        ListItem listItem = new ListItem(false, stringValue);
+        string index = "line" + i;
+        ListItem listItem = new ListItem(index, false, stringValue);
         string json = JsonConvert.SerializeObject(listItem);
-        await localStorage.SetItemAsync<string>("line" + index, json);
+        await localStorage.SetItemAsync<string>(index, json);
     }
 }

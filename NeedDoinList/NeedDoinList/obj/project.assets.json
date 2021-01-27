@@ -6377,11 +6377,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\NeedDoinList\\NeedDoinList\\NeedDoinList.csproj",
+      "projectUniqueName": "C:\\Repos\\TodoListApp\\NeedDoinList\\NeedDoinList\\NeedDoinList.csproj",
       "projectName": "NeedDoinList",
-      "projectPath": "C:\\Projects\\NeedDoinList\\NeedDoinList\\NeedDoinList.csproj",
+      "projectPath": "C:\\Repos\\TodoListApp\\NeedDoinList\\NeedDoinList\\NeedDoinList.csproj",
       "packagesPath": "C:\\Users\\Jannes\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\NeedDoinList\\NeedDoinList\\obj\\",
+      "outputPath": "C:\\Repos\\TodoListApp\\NeedDoinList\\NeedDoinList\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

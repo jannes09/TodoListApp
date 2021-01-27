@@ -8,6 +8,14 @@ namespace NeedDoinList.Models
 {
     public class ListItem
     {
+        private string index;
+
+        public string Index
+        {
+            get { return index; }
+            set { index = value; }
+        }
+
         private bool boxchecked;
 
         public bool BoxChecked
@@ -26,8 +34,9 @@ namespace NeedDoinList.Models
             set { text = value; }
         }
 
-        public ListItem(bool boxchecked, string text)
+        public ListItem(string index, bool boxchecked, string text)
         {
+            this.index = index;
             this.boxchecked = boxchecked;
             this.text = text;
         }
